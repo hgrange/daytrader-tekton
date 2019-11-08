@@ -8,7 +8,7 @@ RUN mvn install -DskipTests
 RUN cd /project/target
 WORKDIR /project/target
 
-RUN /opt/java/openjdk/bin/jar -xf starter-app.jar
+RUN /opt/java/openjdk/bin/jar -xf tradelite.jar
 RUN mv wlp/usr/servers/*/* /config/ 
 
 FROM open-liberty:kernel-java8-openj9
