@@ -7,17 +7,13 @@ Fri Nov 08 08:18:10 GMT 2019--><server>
 <feature>jsp-2.3</feature>
 <feature>servlet-3.1</feature>
 </featureManager>
-<!-- <variable name="DB2_JCC_DRIVER_PATH" value="/opt"/> -->
+        
+
 <httpEndpoint host="*" httpPort="9080" httpsPort="9443" id="defaultHttpEndpoint"/>
-<!-- <variable name="DERBY_JDBC_DRIVER_PATH" value="${WAS_INSTALL_ROOT}/derby/lib"/> -->
-<variable name="DB2_JCC_DRIVER_PATH" value="${shared.config.dir}/lib/global"/>
-<!-- <variable name="UNIVERSAL_JDBC_DRIVER_PATH" value="${WAS_INSTALL_ROOT}/universalDriver/lib"/> -->
-<variable name="DERBY_JDBC_DRIVER_PATH" value="${shared.config.dir}/lib/global"/>
-<!-- <variable name="DB2_JCC_DRIVER_NATIVEPATH" value=""/> -->
-<variable name="UNIVERSAL_JDBC_DRIVER_PATH" value="${shared.config.dir}/lib/global"/>
-<!-- <variable name="PUREQUERY_PATH" value=""/> -->
-<variable name="DB2_JCC_DRIVER_NATIVEPATH" value="${shared.config.dir}/lib/global"/>
-<variable name="PUREQUERY_PATH" value="${shared.config.dir}/lib/global"/>
+
+<variable name="DB2_JCC_DRIVER_PATH" value="${server.config.dir}"/resources>
+<variable name="UNIVERSAL_JDBC_DRIVER_PATH" value="${WAS_INSTALL_ROOT}/universalDriver/lib"/> 
+        
 <applicationManager autoExpand="true"/>
 <!--These elements are from the profile level configuration. Not all of them may be necessary for your application.-->
 <dataSource containerAuthDataRef="gitlabNode01/db2inst1" id="DB2 Using IBM JCC Driver - DataSource" jdbcDriverRef="DB2_Using_IBM_JCC_Driver" jndiName="jdbc/TraderDataSource">
@@ -31,5 +27,5 @@ Fri Nov 08 08:18:10 GMT 2019--><server>
         </library>
     </jdbcDriver>-->
     <authData id="gitlabNode01/db2inst1" password="{xor}Lz4sLCgwLTs=" user="db2inst1"/>
-    <application id="daytrader" location="tradelite.war" name="daytrader" type="war"/>
+    <application id="daytrader" location="tradelite.war" name="daytrader" type="war" context-root="/trader"/>
 </server>
