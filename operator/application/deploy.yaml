@@ -29,9 +29,10 @@ metadata:
   labels:
     app: daytrader
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
-    - name: https
+    - nodePort: 31214
+      name: https
       port: 9443
       protocol: TCP
       targetPort: 9443
