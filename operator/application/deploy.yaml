@@ -38,4 +38,26 @@ spec:
       targetPort: 9443
   selector:
     app: daytrader
+---
+kind: Route
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"route.openshift.io/v1","kind":"Route","metadata":{"annotations":{},"name":"daytrader","namespace":"tekton"},"spec":{"host":"daytrader.ocp.ibm.com","tls":{"insecureEdgeTerminationPolicy":"Redirect","termination":"Reencrypt"},"to":{"kind":"Service","name":"day-trader-service"}}}
+  creationTimestamp: null
+  name: icpa-landing
+  selfLink: /apis/route.openshift.io/v1/namespaces/kabanero/routes/icpa-landing
+spec:
+  host: daytrader.ocp.ibm.com
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: reencrypt
+  to:
+    kind: Service
+    name: daytrader-service
+    weight: 100
+  wildcardPolicy: None
+status:
+  ingress: null
+
 
