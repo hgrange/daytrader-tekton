@@ -39,6 +39,7 @@ spec:
   selector:
     app: daytrader
 ---
+apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   annotations:
