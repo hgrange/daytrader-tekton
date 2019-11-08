@@ -16,7 +16,7 @@ spec:
           value: /opt/ol/wlp/output/defaultServer
         name: daytrader
         ports:
-        - containerPort: 9443
+        - containerPort: 9080
         imagePullPolicy: Always
 ---
 #Deploy the service
@@ -32,10 +32,10 @@ spec:
   type: NodePort
   ports:
     - nodePort: 31214
-      name: https
-      port: 9443
+      name: http
+      port: 9080
       protocol: TCP
-      targetPort: 9443
+      targetPort: 9080
   selector:
     app: daytrader
 ---
@@ -46,13 +46,10 @@ metadata:
     kubectl.kubernetes.io/last-applied-configuration: |
       {"apiVersion":"route.openshift.io/v1","kind":"Route","metadata":{"annotations":{},"name":"daytrader","namespace":"tekton"},"spec":{"host":"daytrader.ocp.ibm.com","tls":{"insecureEdgeTerminationPolicy":"Redirect","termination":"Reencrypt"},"to":{"kind":"Service","name":"day-trader-service"}}}
   creationTimestamp: null
-  name: icpa-landing
-  selfLink: /apis/route.openshift.io/v1/namespaces/kabanero/routes/icpa-landing
+  name: daytrader
+  selfLink: /apis/route.openshift.io/v1/namespaces/kabanero/routes/daytrader
 spec:
   host: daytrader.ocp.ibm.com
-  tls:
-    insecureEdgeTerminationPolicy: Redirect
-    termination: reencrypt
   to:
     kind: Service
     name: daytrader-service
