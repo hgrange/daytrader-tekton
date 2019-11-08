@@ -50,6 +50,7 @@ metadata:
   selfLink: /apis/route.openshift.io/v1/namespaces/kabanero/routes/daytrader
 spec:
   host: daytrader.ocp.ibm.com
+  path: /trader
   to:
     kind: Service
     name: daytrader-service
