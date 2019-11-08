@@ -28,7 +28,6 @@ Fri Nov 08 08:18:10 GMT 2019--><server>
         <library>
             <file name="${DB2_JCC_DRIVER_PATH}/db2jcc4.jar"/>
             <file name="${UNIVERSAL_JDBC_DRIVER_PATH}/db2jcc_license_cu.jar"/>
-            <file name="${DB2_JCC_DRIVER_PATH}/db2jcc_license_cisuz.jar"/>
         </library>
     </jdbcDriver>-->
     <authData id="gitlabNode01/db2inst1" password="{xor}Lz4sLCgwLTs=" user="db2inst1"/>
