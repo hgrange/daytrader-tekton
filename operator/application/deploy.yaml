@@ -1,0 +1,60 @@
+#Deploy the pod
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: daytrader
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: daytrader
+    spec:
+      containers:
+      - env:
+        - name: WLP_OUTPUT_DIR
+          value: /opt/ol/wlp/output/defaultServer
+        name: daytrader
+        ports:
+        - containerPort: 9443
+        imagePullPolicy: Always
+---
+#Deploy the service
+apiVersion: v1
+kind: Service
+metadata:
+  name: daytrader-service
+  annotations:
+    debliberty: "true"
+  labels:
+    app: daytrader
+spec:
+  type: ClusterIP
+  ports:
+    - name: https
+      port: 9443
+      protocol: TCP
+      targetPort: 9443
+  selector:
+    app: daytrader
+---   
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: daytrader-route
+spec:
+  host: daytrader.ocp.ibm.com
+  path: "/trader" 
+  to:
+    kind: Service
+    name: daytrader-service
+    weight: 100
+status:
+  ingress:
+  - conditions:
+    - lastTransitionTime: 2019-11-06T10:48:46Z
+      status: "True"
+      type: Admitted
+    host: daytrader.ocp.ibm.com
+    routerName: router
+    wildcardPolicy: None
