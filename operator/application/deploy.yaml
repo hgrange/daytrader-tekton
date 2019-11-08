@@ -42,12 +42,7 @@ spec:
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  annotations:
-    kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"route.openshift.io/v1","kind":"Route","metadata":{"annotations":{},"name":"daytrader","namespace":"tekton"},"spec":{"host":"daytrader.ocp.ibm.com","tls":{"insecureEdgeTerminationPolicy":"Redirect","termination":"Reencrypt"},"to":{"kind":"Service","name":"day-trader-service"}}}
-  creationTimestamp: null
   name: daytrader
-  selfLink: /apis/route.openshift.io/v1/namespaces/kabanero/routes/daytrader
 spec:
   host: daytrader.ocp.ibm.com
   path: /trader
