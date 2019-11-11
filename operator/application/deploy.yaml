@@ -45,7 +45,6 @@ metadata:
   name: daytrader
 spec:
   host: daytrader.ocp.ibm.com
-  path: /trader
   to:
     kind: Service
     name: daytrader-service
