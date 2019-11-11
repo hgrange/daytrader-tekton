@@ -27,5 +27,5 @@ Fri Nov 08 08:18:10 GMT 2019--><server>
         </library>
     </jdbcDriver>-->
     <authData id="gitlabNode01/db2inst1" password="{xor}Lz4sLCgwLTs=" user="db2inst1"/>
-    <application id="daytrader" location="tradelite.war" name="daytrader" type="war" context-root="/trader"/>
+    <application id="daytrader" location="tradelite.war" name="daytrader" type="war" context-root="/"/>
 </server>
